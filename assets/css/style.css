@@ -17,7 +17,7 @@
 
 .search{
   width: 100%;
-  padding: 5px;
+  padding-bottom: 15px;
   display:flex;
   align-items: center;
   justify-content: space-between;
@@ -44,6 +44,12 @@
   cursor: pointer;
 }
 
+.date{
+  padding: 10px;
+  color: rgb(154, 241, 243);
+  font-size: 30px;
+}
+
 .temp{
   padding: 5px;
   color: white;
@@ -54,4 +60,26 @@
   padding: 5px;
   color: white;
   font-size: 30px;
+}
+
+.conditions{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.humidity{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  font-size: 23px;
+}
+
+.wind{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  font-size: 23px;
 }
