@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-  </head>
-  <body>
-<div class="card">
-  <div class="search">
-    <input type="text" placeholder="City" spellcheck="false">
-    <button>Search</button>
-  </div>
-  <div class="weather">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="card">
+    <div class="search">
+      <input type="text" placeholder="City, State" spellcheck="false">
+      <p class="error"> Invalid City Name</p>
+      <button>Search</button>
+    </div>
     <div class="date">August 19, 2023</div>
-    <h1 class="city">Lodi</h1>
-    <h2 class="temp">20 °F</h2>
-    <img src="assets/images/partlycloudy.png">
-    <div class="conditions">
-      <p class="humidity">
-        40
-        <img src="assets/images/humidity.png">
-      </p>
-      <p class="wind">
-        <img src="assets/images/wind.png">
-        15 mph
-      </p>
+    <div class="weather">
+      <!-- <div class="date">August 19, 2023</div> -->
+      <h1 class="city">Elmwood Park</h1>
+      <h2 class="temp">70 °F</h2>
+      <img src="assets/images/partlycloudy.png" class="weather-icon">
+      <div class="conditions">
+        <div class="column">
+          <div>
+            <p class="humidity">50</p>
+          </div>
+          <img src="assets/images/humidity.png">
+        </div>
+        <div class="column">
+          <img src="assets/images/wind.png">
+          <div>
+            <p class="wind">15</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<script src="assets/javascript/script.js"></script>
-  </body>
+  <script src="assets/javascript/script.js"></script>
+</body>
+
 </html>
