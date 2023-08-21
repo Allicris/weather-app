@@ -1,4 +1,9 @@
 //For the base url we want to use the parameter &limit={limit} and q={city name},{state code},{country code}
+// const moment = require('moment');
+// console.log(moment());
+
+// var today = moment();
+// $(".date").text(today.format("MMM DD, YYYY"));
 
 const apiKey = "d45477c23f64263ae329c1cedb3ece85";
 // const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
@@ -18,6 +23,7 @@ searchBtn.addEventListener("click", () => {
   document.querySelector(".search p").style.display = "none";
   document.querySelector(".weather").style.display = "block";
   document.querySelector(".five-day").style.display = "block";
+  document.querySelector(".saved-searches").style.display = "block";
 });
 
 async function currentWeather(city) {

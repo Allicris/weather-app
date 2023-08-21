@@ -109,6 +109,7 @@
 }
 
 .saved-searches{
+  display: none;
   padding-top: 68px;
   color: rgb(226, 184, 228);
 }
