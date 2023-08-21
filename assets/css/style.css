@@ -113,15 +113,19 @@
   border-radius: 20px;
   padding: 30px;
   text-align: center;
-  font-size: 15px;
+  font-size: 10px;
   color: white;
 }
 
 .windy .humid{
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .resize{
-  width: 30px;
+  width: 25px;
   height: auto;
+}
+
+.column1{
+  display: inline-block;
 }

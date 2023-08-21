@@ -13,6 +13,12 @@ const savedSearches = [];
 // let dateFormat = moment().format('D-MM-YYYY');
 // console.log(dateFormat1); // 23-08-2022
 
+searchBtn.addEventListener("click", () => {
+  currentWeather(searchCity.value);
+  document.querySelector(".search p").style.display = "none";
+  document.querySelector(".weather").style.display = "block";
+});
+
 async function currentWeather(city) {
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
 
@@ -42,12 +48,15 @@ async function currentWeather(city) {
   } else if (data.weather[0].main == 'Snow') {
     weatherIcon.src = "assets/images/snow.png";
   }
+
+  getFiveDay();
 }
 
 async function getFiveDay() {
   const searchCity = document.querySelector(".search input");
   //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key})
-  const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity.value + "&appid=" + apiKey;
+  const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity.value + "&appid=" + apiKey +
+  "&units=imperial";
   const response = await fetch(fiveDayUrl);
   if(!response.ok) {
     throw new Error('Network response was not ok');
@@ -66,16 +75,16 @@ const humidElements = document.querySelectorAll('.humid');
 
     for (i = 0; i < Math.min(5, data.list.length); i++) {
       tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "°";
-      windyElements[i].innerHTML = Math.round(data.wind.speed) + " " + "mph/hr";
+      windyElements[i].innerHTML = Math.round(data.list[i].wind.speed) + " " + "mph/hr";
       humidElements[i].innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
     }
   }
 
-searchBtn.addEventListener("click", () => {
-  currentWeather(searchCity.value);
-  document.querySelector(".search p").style.display = "none";
-  document.querySelector(".weather").style.display = "block";
-});
+// searchBtn.addEventListener("click", () => {
+//   currentWeather(searchCity.value);
+//   document.querySelector(".search p").style.display = "none";
+//   document.querySelector(".weather").style.display = "block";
+// });
 
 getFiveDay();
 currentWeather();
