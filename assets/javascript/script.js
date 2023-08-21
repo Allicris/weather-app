@@ -49,16 +49,25 @@ async function getFiveDay() {
   //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key})
   const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity.value + "&appid=" + apiKey;
   const response = await fetch(fiveDayUrl);
+  if(!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
   const data = await response.json();
   
-    for (i = 0; i < 5; i++) {
-      document.querySelector('.tempy').innerHTML = Math.round(data.list[i].main.temp) + " " + "°";
-    }
-    for (i = 0; i < 5; i++) {
-      document.querySelector('.windy').innerHTML = Math.round(data.wind.speed) + " " + "mph/hr";
-    }
-    for (i = 0; i < 5; i++) {
-      document.querySelector('.humid').innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
+  if(!data || !data.list || data.list.length === 0) {
+    console.log('Invalid or empty data received from the API');
+    return;
+  }
+
+const tempElements = document.querySelectorAll(".tempy");
+const windyElements = document.querySelectorAll(".windy");
+const humidElements = document.querySelectorAll('.humid');
+
+    for (i = 0; i < Math.min(5, data.list.length); i++) {
+      tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "°";
+      windyElements[i].innerHTML = Math.round(data.wind.speed) + " " + "mph/hr";
+      humidElements[i].innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
     }
   }
 
