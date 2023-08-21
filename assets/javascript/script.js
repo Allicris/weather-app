@@ -17,6 +17,7 @@ searchBtn.addEventListener("click", () => {
   currentWeather(searchCity.value);
   document.querySelector(".search p").style.display = "none";
   document.querySelector(".weather").style.display = "block";
+  document.querySelector(".five-day").style.display = "block";
 });
 
 async function currentWeather(city) {
@@ -35,7 +36,7 @@ async function currentWeather(city) {
   // document.querySelector('.date').innerHTML = "";
   document.querySelector('.city').innerHTML = data.name;
   //This needs to be rounded up.
-  document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + " " + "°";
+  document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + " " + "&deg;";
   document.querySelector('.wind').innerHTML = Math.round(data.wind.speed) + " " + "mph/hr";
   document.querySelector('.humidity').innerHTML = "Humidity" + " " + Math.round(data.main.humidity);
 
@@ -74,8 +75,8 @@ const windyElements = document.querySelectorAll(".windy");
 const humidElements = document.querySelectorAll('.humid');
 
     for (i = 0; i < Math.min(5, data.list.length); i++) {
-      tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "°";
-      windyElements[i].innerHTML = Math.round(data.list[i].wind.speed) + " " + "mph/hr";
+      tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "&deg;";
+      windyElements[i].innerHTML = " " + Math.round(data.list[i].wind.speed) + " " + "mph/hr";
       humidElements[i].innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
     }
   }
@@ -86,5 +87,5 @@ const humidElements = document.querySelectorAll('.humid');
 //   document.querySelector(".weather").style.display = "block";
 // });
 
-getFiveDay();
-currentWeather();
+// getFiveDay();
+// currentWeather();

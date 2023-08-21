@@ -5,11 +5,18 @@
   box-sizing: border-box;
 }
 
+.website{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
 .card{
   width: 90%;
   max-width: 100%;
   background-image: linear-gradient(rgb(81, 163, 207), rgb(1, 131, 143));
-  margin: 20px auto 0;
+  margin: 20px;
   border-radius: 20px;
   padding: 30px;
   text-align: center;
@@ -101,31 +108,55 @@
   font-size: 23px;
 }
 
+.saved-searches{
+  padding-top: 68px;
+  color: rgb(226, 184, 228);
+}
+
+.search-title{
+  padding:5px;
+  font-style:italic;
+  text-align: left;
+}
+
+#history{
+  padding:5px;
+  text-align: left;
+  color: white;
+}
+
 .five-day{
-  display: flex;
+  display: none;
   align-items: center;
-  justify-content: space-between;
   width: 90%;
   max-width: 100%;
   background-image: linear-gradient( rgb(81, 163, 207),rgb(153, 118, 230));
   margin: 20px;
   margin-left: 63px;
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   font-size: 10px;
   color: white;
+  text-align: center;
+}
+
+.tempy, .future-day1, .future-day2, .future-day3, .future-day4, .future-day5 {
+  padding: 5px;
+}
+
+.future-date1, .future-date2, .future-date3, .future-date4, .future-date5 {
+  font-size: 13px;
+  padding: 2px;
 }
 
 .windy .humid{
   font-size: 10px;
+  text-align: center;
+  padding: 5px;
 }
 
 .resize{
   width: 25px;
   height: auto;
-}
-
-.column1{
-  display: inline-block;
 }
