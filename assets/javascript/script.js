@@ -5,7 +5,8 @@ const searchCity = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
-const savedSearches = [];
+// let listContainer = $('#saved-searches');
+// const savedSearches = [];
 
 function getCurrentDate() {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -79,16 +80,17 @@ async function getFiveDay() {
     console.log('Invalid or empty data received from the API');
     return;
   }
-  
+
   const fiveDays = document.querySelectorAll('.future-day');
 
   for (i = 0; i < Math.min(5, data.list.length); i++) {
     const tempElements = document.querySelectorAll(".tempy");
     const windyElements = document.querySelectorAll(".windy");
     const humidElements = document.querySelectorAll('.humid');
-    const fiveDayElement = fiveDays[i].querySelectorAll('.future-date')
+    const fiveDayElement = fiveDays[i].querySelector('.future-date')
     
     fiveDayElement.textContent = getFutureDate(i);
+    console.log(fiveDayElement);
     tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "&deg;";
     windyElements[i].innerHTML = " " + Math.round(data.list[i].wind.speed) + " " + "mph/hr";
     humidElements[i].innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
