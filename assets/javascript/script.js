@@ -1,22 +1,27 @@
-//For the base url we want to use the parameter &limit={limit} and q={city name},{state code},{country code}
-// const moment = require('moment');
-// console.log(moment());
-
-// var today = moment();
-// $(".date").text(today.format("MMM DD, YYYY"));
 
 const apiKey = "d45477c23f64263ae329c1cedb3ece85";
-// const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
-//const fiveDayApi = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}units=imperial";
+
 const searchCity = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
 const savedSearches = [];
 
-// var today = moment();
-// let dateFormat = moment().format('D-MM-YYYY');
-// console.log(dateFormat1); // 23-08-2022
+function getCurrentDate() {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Intl.DateTimeFormat('en-US', options).format(new Date());
+}
+
+// Add this code to your 'currentWeather' function where you update other elements
+document.querySelector('.date').innerHTML = getCurrentDate();
+
+function getFutureDate(daysToAdd) {
+  const currentDate = new Date();
+  const futureDate = new Date(currentDate);
+  futureDate.setDate(currentDate.getDate() + daysToAdd + 1); // +1 because you want the future date
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Intl.DateTimeFormat('en-US', options).format(futureDate);
+}
 
 searchBtn.addEventListener("click", () => {
   currentWeather(searchCity.value);
@@ -32,6 +37,8 @@ async function currentWeather(city) {
   const response = await fetch(apiUrl);
   var data = await response.json();
 
+
+
   if (response.status == 404) {
     document.querySelector(".search p").style.display = "block";
     document.querySelector(".weather").style.display = "none";
@@ -39,9 +46,7 @@ async function currentWeather(city) {
 
   console.log(data);
 
-  // document.querySelector('.date').innerHTML = "";
   document.querySelector('.city').innerHTML = data.name;
-  //This needs to be rounded up.
   document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + " " + "&deg;";
   document.querySelector('.wind').innerHTML = Math.round(data.wind.speed) + " " + "mph/hr";
   document.querySelector('.humidity').innerHTML = "Humidity" + " " + Math.round(data.main.humidity);
@@ -61,37 +66,31 @@ async function currentWeather(city) {
 
 async function getFiveDay() {
   const searchCity = document.querySelector(".search input");
-  //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key})
   const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity.value + "&appid=" + apiKey +
-  "&units=imperial";
+    "&units=imperial";
   const response = await fetch(fiveDayUrl);
-  if(!response.ok) {
+  if (!response.ok) {
     throw new Error('Network response was not ok');
   }
 
   const data = await response.json();
-  
-  if(!data || !data.list || data.list.length === 0) {
+
+  if (!data || !data.list || data.list.length === 0) {
     console.log('Invalid or empty data received from the API');
     return;
   }
+  
+  const fiveDays = document.querySelectorAll('.future-day');
 
-const tempElements = document.querySelectorAll(".tempy");
-const windyElements = document.querySelectorAll(".windy");
-const humidElements = document.querySelectorAll('.humid');
-
-    for (i = 0; i < Math.min(5, data.list.length); i++) {
-      tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "&deg;";
-      windyElements[i].innerHTML = " " + Math.round(data.list[i].wind.speed) + " " + "mph/hr";
-      humidElements[i].innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
-    }
+  for (i = 0; i < Math.min(5, data.list.length); i++) {
+    const tempElements = document.querySelectorAll(".tempy");
+    const windyElements = document.querySelectorAll(".windy");
+    const humidElements = document.querySelectorAll('.humid');
+    const fiveDayElement = fiveDays[i].querySelectorAll('.future-date')
+    
+    fiveDayElement.textContent = getFutureDate(i);
+    tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "&deg;";
+    windyElements[i].innerHTML = " " + Math.round(data.list[i].wind.speed) + " " + "mph/hr";
+    humidElements[i].innerHTML = "Humidity" + " " + Math.round(data.list[i].main.humidity);
   }
-
-// searchBtn.addEventListener("click", () => {
-//   currentWeather(searchCity.value);
-//   document.querySelector(".search p").style.display = "none";
-//   document.querySelector(".weather").style.display = "block";
-// });
-
-// getFiveDay();
-// currentWeather();
+}

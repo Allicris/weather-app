@@ -142,11 +142,11 @@
   text-align: center;
 }
 
-.tempy, .future-day1, .future-day2, .future-day3, .future-day4, .future-day5 {
+.tempy, .future-day {
   padding: 5px;
 }
 
-.future-date1, .future-date2, .future-date3, .future-date4, .future-date5 {
+.future-date {
   font-size: 13px;
   padding: 2px;
 }
