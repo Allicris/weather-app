@@ -20,6 +20,7 @@ const createHistoryElement = (cityInput) => {
 
 searchBtn.addEventListener("click", () => {
   createHistoryElement(cityInput.value);
+  saved();
 })
 //Local storage function
 function saved() {
@@ -37,7 +38,7 @@ var clearHistory = document.querySelector(".clear");
 clearHistory.addEventListener("click", function () {
   const historyContainer = document.getElementById('history');
     historyContainer.innerHTML = "";
-    // localStorage.clear();
+    localStorage.clear();
 });
 
 function getCurrentDate() {
