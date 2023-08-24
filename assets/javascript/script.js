@@ -7,7 +7,6 @@ const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 const searchContainer = document.querySelector('.saved-searches');
 const cityInput = document.getElementById('cityinput');
-const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 
 const savedSearches = [];
 
@@ -99,11 +98,11 @@ async function currentWeather(city) {
   getFiveDay();
 }
 
-async function getFiveDay() {
+async function getFiveDay(fiveDayUrl) {
   const searchCity = document.querySelector(".search input");
   const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity.value + "&appid=" + apiKey +
     "&units=imperial";
-  const response = await fetch(corsProxy + fiveDayUrl);
+  const response = await fetch(fiveDayUrl);
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
