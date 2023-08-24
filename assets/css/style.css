@@ -43,6 +43,7 @@
   background: rgb(184, 183, 183);
   color: white;
   padding: 5px;
+  padding-bottom: 10px;
   border-radius: 15px;
   height: 40px;
 }
@@ -110,7 +111,7 @@
 
 .saved-searches{
   display: none;
-  padding-top: 68px;
+  padding-top: 74px;
   color: rgb(226, 184, 228);
 }
 
@@ -121,8 +122,10 @@
 }
 
 #history{
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
   padding:5px;
-  text-align: left;
   color: white;
 }
 
@@ -160,4 +163,13 @@
 .resize{
   width: 25px;
   height: auto;
+}
+
+.clear {
+  text-align: left;
+  background-color: transparent;
+  border-color: pink;
+  color: pink;
+  border-radius: 20px;
+  padding: 5px;
 }

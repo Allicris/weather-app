@@ -1,12 +1,44 @@
 
 const apiKey = "d45477c23f64263ae329c1cedb3ece85";
 
+const searchBox = document.querySelector('.search');
 const searchCity = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
+const searchContainer = document.querySelector('.saved-searches');
+const cityInput = document.getElementById('cityinput');
 
-// let listContainer = $('#saved-searches');
-// const savedSearches = [];
+const savedSearches = [];
+
+const createHistoryElement = (cityInput) => {
+  const searchCityDiv = document.createElement('div');
+  const cityNameText = document.createTextNode(cityInput);
+  searchCityDiv.appendChild(cityNameText);
+  const historyContainer = document.getElementById('history');
+  historyContainer.appendChild(searchCityDiv);
+};
+
+searchBtn.addEventListener("click", () => {
+  createHistoryElement(cityInput.value);
+})
+//Local storage function
+function saved() {
+  var savedCity = cityInput.value.trim()
+  var storedCity = JSON.parse(localStorage.getItem("storedCity")) || [];
+  var city = {
+      savedCity: savedCity,
+  }
+  storedCity.push(city)
+
+  localStorage.setItem("storedCity", JSON.stringify(storedCity));
+};
+
+var clearHistory = document.querySelector(".clear");
+clearHistory.addEventListener("click", function () {
+  const historyContainer = document.getElementById('history');
+    historyContainer.innerHTML = "";
+    // localStorage.clear();
+});
 
 function getCurrentDate() {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -88,7 +120,7 @@ async function getFiveDay() {
     const windyElements = document.querySelectorAll(".windy");
     const humidElements = document.querySelectorAll('.humid');
     const fiveDayElement = fiveDays[i].querySelector('.future-date')
-    
+
     fiveDayElement.textContent = getFutureDate(i);
     console.log(fiveDayElement);
     tempElements[i].innerHTML = Math.round(data.list[i].main.temp) + " " + "&deg;";
