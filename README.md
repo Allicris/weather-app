@@ -10,27 +10,27 @@ This website has been created for the purpose of looking up the current weather 
 
 ## Table of Contents
 
--         [User Story](#User Story)
+-[User Story](#User-Story)
 
--         [Acceptance Criteria](#Acceptance Criteria)
+-[Acceptance Criteria](#Acceptance-Criteria)
 
--         [Installation](#Installation)
+-[Installation](#Installation)
 
--         [Technologies Used](#Technologies Used)
+-[Technologies Used](#Technologies-Used)
 
--         [My Successes and Challenges](#My Successes and Challenges)
+-[My Successes and Challenges](#My-Successes-and-Challenges)
 
--         [User Interface](#User Interface)
+-[User Interface](#User-Interface)
 
--         [Future Development](#Future Development)
+-[Future Development](#Future-Development)
 
--         [Author](#Author)
+-[Author](#Author)
 
  
 
 ## User Story
 
-```
+```md
 
 AS A traveler
 
@@ -38,13 +38,13 @@ I WANT to see the weather outlook for multiple cities
 
 SO THAT I can plan a trip accordingly
 
-```
+````
 
  
 
 ## Acceptance Criteria
 
-```
+```md
 
 GIVEN a weather dashboard with form inputs
 
@@ -64,27 +64,33 @@ WHEN I click on a city in the search history
 
 THEN I am again presented with current and future conditions for that city
 
-```
+````
 
  
 
 ## User Interface
-
-(screenshots)
-
- 
+### Landing Page
+![Landing Page](./assets/readme-images/landing.png)
+### City Look Up Page
+![City Look Up](./assets/readme-images/citylookup.png)
+### Saved to Local Storage
+![Saved to Local Storage](./assets/readme-images/localstorage.png)
+### Clearing Search History
+![Clearing Search History](./assets/readme-images/clear.png)
+### Clearing Local Storage
+![Clearing Local Storage](./assets/readme-images/clearlocal.png)
 
 ## Installation
 
--         Navigate to my repository: https://github.com/Allicris/weather-app
+-Navigate to my repository: https://github.com/Allicris/weather-app
 
--         Click on the green “Code” Button
+-Click on the green “Code” Button
 
--         Select SSH and copy
+-Select SSH and copy
 
--         Open your terminal and navigate to the appropriate folder you want the repository in.
+-Open your terminal and navigate to the appropriate folder you want the repository in.
 
--         Type the following in the terminal:
+-Type the following in the terminal:
 
 a.     git clone (the ssh key)
 
@@ -96,11 +102,11 @@ c.      Type code . to open the repository in VS Code
 
 ## Technologies Used
 
--         OpenWeather website for the current day forecast and five-day forecast
+-OpenWeather website for the current day forecast and five-day forecast
 
--         Local Storage
+-Local Storage
 
--         Google Chrome Dev
+-Google Chrome Dev Extension
 
  
 
