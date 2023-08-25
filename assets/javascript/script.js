@@ -98,9 +98,9 @@ async function currentWeather(city) {
   getFiveDay();
 }
 
-async function getFiveDay(city) {
+async function getFiveDay() {
   // const searchCity = document.querySelector(".search input");
-  const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey +
+  const fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity.value + "&appid=" + apiKey +
     "&units=imperial";
   const response = await fetch(fiveDayUrl);
   if (!response.ok) {
